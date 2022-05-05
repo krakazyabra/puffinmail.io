@@ -1,4 +1,4 @@
-![Highloader the smoking puffin](puffin.png =250x "Meet Highloader. They smoking Puffin.")
+![Highloader the smoking puffin](puffin.png =250x250 "Meet Highloader. They smoking Puffin.")
 
 # burner.kiwi
 
