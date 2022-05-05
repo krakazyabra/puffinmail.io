@@ -41,6 +41,6 @@ func (s *Server) getStaticDetails() staticDetails {
 	return staticDetails{
 		FontPath: s.cfg.StaticURL,
 		CSS:      fmt.Sprintf("%s/%s", s.cfg.StaticURL, css),
-		Logo:     fmt.Sprintf("%s/%s", s.cfg.StaticURL, "roger.svg"),
+		Logo:     fmt.Sprintf("%s/%s", s.cfg.StaticURL, "puffin.png"),
 	}
 }

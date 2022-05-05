@@ -1,4 +1,4 @@
-![Roger the pyro kiwi](roger.png?raw=true "Meet Roger. They pyromaniac Kiwi.")
+![Highloader the smoking puffin](puffin.png?raw=true "Meet Highloader. They smoking Puffin.")
 
 # burner.kiwi
 

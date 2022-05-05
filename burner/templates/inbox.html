@@ -2,7 +2,7 @@
     <div class="content">
         <div class="sidebar {{ if .HasSelectedMessage }}hide{{end}}">
             <div class="sidebar-header">
-                <img src="{{.Static.Logo}}" alt="Meet Roger. The pyromaniac kiwi!" class="roger" draggable="false">
+                <img src="{{.Static.Logo}}" alt="Meet Highloader. The smoking puffin!" class="roger" draggable="false">
                 <div class="inbox-details">
                     <h1 class="inbox-address">{{.Inbox.Address}}</h1>
                     <p>Expires in {{.Inbox.Expires.Hours}} hours and {{.Inbox.Expires.Minutes}} minutes</p>
@@ -30,9 +30,6 @@
                 <p class="no-emails">No messages</p>
                 {{end}}
 
-            </div>
-            <div class="sidebar-info">
-                <p><a href="https://github.com/haydenwoodhead/burner.kiwi/" target="_blank">Github</a> - <a href="https://about.burner.kiwi/" target="_blank">FAQ</a> - <a href="https://about.burner.kiwi/apidocs" target="_blank">API</a></p>
             </div>
         </div>
         <div class="email-display {{ if not .HasSelectedMessage }}hide{{end}}">
