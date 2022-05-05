@@ -1,6 +1,7 @@
 #ignore idea files
 .idea/
 .vscode/
+.DS_Store
 
 # ignore bin/
 bin/
@@ -20,3 +21,4 @@ burnerkiwi.test
 
 dist/
 kubernetes/
+domains/
