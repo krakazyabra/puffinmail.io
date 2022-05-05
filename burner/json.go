@@ -48,7 +48,7 @@ func (s *Server) NewInboxJSON(w http.ResponseWriter, r *http.Request) {
 
 	i.ID = uuid.Must(uuid.NewRandom()).String()
 	i.CreatedAt = time.Now().Unix()
-	i.TTL = time.Now().Add(time.Hour * 24).Unix()
+	i.TTL = time.Now().Add(time.Minute * 30).Unix()
 	i.CreatedBy = r.RemoteAddr
 
 	// Mailgun can take a really long time to register a route (sometimes up to 2 seconds) so
