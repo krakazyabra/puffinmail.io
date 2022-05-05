@@ -1,6 +1,6 @@
-![Highloader the smoking puffin](puffin.png =250x "Meet Highloader. They smoking Puffin.")
+<img src="https://raw.githubusercontent.com/krakazyabra/puffinmail.io/master/puffin.png" width="250" alt="Meet Highloader. They smoking Puffin." />
 
-# burner.kiwi
+# puffinmail.io
 
 ![Build Status](https://github.com/haydenwoodhead/burner.kiwi/actions/workflows/qa.yml/badge.svg) [![Go Report Card](https://goreportcard.com/badge/github.com/haydenwoodhead/burner.kiwi)](https://goreportcard.com/report/github.com/haydenwoodhead/burner.kiwi) [![Coverage Status](https://coveralls.io/repos/github/haydenwoodhead/burner.kiwi/badge.svg)](https://coveralls.io/github/haydenwoodhead/burner.kiwi)
 
