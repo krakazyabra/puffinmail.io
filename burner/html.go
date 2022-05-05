@@ -139,7 +139,7 @@ func (s *Server) NewNamedInbox(w http.ResponseWriter, r *http.Request) {
 func (s *Server) createRouteFromInbox(session *session, i Inbox, remoteAddr string, w http.ResponseWriter) error {
 	i.ID = uuid.Must(uuid.NewRandom()).String()
 	i.CreatedAt = time.Now().Unix()
-	i.TTL = time.Now().Add(time.Hour * 24).Unix()
+	i.TTL = time.Now().Add(time.Minute * 30).Unix()
 	i.CreatedBy = remoteAddr
 
 	// Mailgun can take a really long time to register a route (sometimes up to 2 seconds) so
