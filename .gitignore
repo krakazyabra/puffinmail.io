@@ -19,3 +19,4 @@ burnerkiwi.test
 *.db
 
 dist/
+kubernetes/
