@@ -1,4 +1,4 @@
-![Highloader the smoking puffin](puffin.png =250x250 "Meet Highloader. They smoking Puffin.")
+<img src="https://raw.githubusercontent.com/krakazyabra/puffinmail.io/master/puffin.png" width="250" alt="Meet Highloader. They smoking Puffin." />
 
 # burner.kiwi
 
