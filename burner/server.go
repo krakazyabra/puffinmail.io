@@ -59,7 +59,7 @@ func New(cfg Config, db Database, email EmailProvider) (*Server, error) {
 		s.getEditTemplate()
 	}
 
-	s.sessionStore.MaxAge(10802) // set max cookie age to 3 hours + 2 seconds
+	s.sessionStore.MaxAge(1802) // set max cookie age to 3 hours + 2 seconds
 
 	err := s.db.Start()
 	if err != nil {
