@@ -1,84 +1,126 @@
 {{define "content"}}
-    <div class="content">
-        <div class="sidebar {{ if .HasSelectedMessage }}hide{{end}}">
-            <div class="sidebar-header">
-                <img src="{{.Static.Logo}}" alt="Meet Highloader. The smoking puffin!" class="roger" draggable="false">
-                <div class="inbox-details">
-                    <h1 class="inbox-address">{{.Inbox.Address}}</h1>
-                    <p>Expires in {{.Inbox.Expires.Minutes}} minutes</p>
-                </div>
-                <div class="action-buttons">
-                    <a href="/" class="action-btn"><span class="visually-hidden">Refresh</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M5.463 4.433A9.961 9.961 0 0 1 12 2c5.523 0 10 4.477 10 10 0 2.136-.67 4.116-1.81 5.74L17 12h3A8 8 0 0 0 6.46 6.228l-.997-1.795zm13.074 15.134A9.961 9.961 0 0 1 12 22C6.477 22 2 17.523 2 12c0-2.136.67-4.116 1.81-5.74L7 12H4a8 8 0 0 0 13.54 5.772l.997 1.795z"/></svg></a>
-                    <a href="/delete" class="action-btn"><span class="visually-hidden">Delete</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M17 6h5v2h-2v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8H2V6h5V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3zm1 2H6v12h12V8zm-9 3h2v6H9v-6zm4 0h2v6h-2v-6zM9 4v2h6V4H9z"/></svg></svg></a>
-                </div>
+<div class="content">
+    <div class="sidebar {{ if .HasSelectedMessage }}hide{{end}}">
+        <div class="sidebar-header">
+            <img src="{{.Static.Logo}}" alt="Meet Highloader. The smoking puffin!" class="roger" draggable="false">
+            <div class="inbox-details">
+                <h1 class="inbox-address">{{.Inbox.Address}}</h1>
+                <p>Expires in {{.Inbox.Expires.Minutes}} minutes</p>
             </div>
-            <div class="sidebar-emails">
-                {{ range $i, $m := .Messages }}
-                <!-- {$m.ID} -->
-                <a class="sidebar-email {{ if eq $.SelectedMessage.ID $m.ID }}active{{end}}" href="/messages/{{$m.ID}}" draggable="false">
-                    <div>
-                        <div class="email-avatar {{$m.AvatarColor}}"><p>{{$m.AvatarLetter}}</p></div>
-                    </div>
-                    <div class="sidebar-email-details">
-                        <div class="sidebar-email-from">{{$m.FromName}}</div>
-                        <div class="sidebar-email-subject">{{$m.Subject}}</div>
-                        <div class="sidebar-email-time">{{$m.ReceivedAt}}</div>
-                    </div>
-                </a>
-                {{else}}
-                <p class="no-emails">No messages</p>
-                {{end}}
-
-            </div>
-            <div class="sidebar-info">
-                <p><a href="https://github.com/krakazyabra/puffinmail.io/" target="_blank">Github</a> - <a href="https://about.puffinmail.io/" target="_blank">FAQ</a> - <a href="https://about.puffinmail.io/apidocs" target="_blank">API</a></p>
-                <p>For collaboration: <a href="mailto:krakazyabra@puffinmail.io">krakazyabra@puffinmail.io</a></p>
+            <div class="action-buttons">
+                <a href="/" class="action-btn"><span class="visually-hidden">Refresh</span><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="none" d="M0 0h24v24H0z" />
+                        <path
+                            d="M5.463 4.433A9.961 9.961 0 0 1 12 2c5.523 0 10 4.477 10 10 0 2.136-.67 4.116-1.81 5.74L17 12h3A8 8 0 0 0 6.46 6.228l-.997-1.795zm13.074 15.134A9.961 9.961 0 0 1 12 22C6.477 22 2 17.523 2 12c0-2.136.67-4.116 1.81-5.74L7 12H4a8 8 0 0 0 13.54 5.772l.997 1.795z" />
+                    </svg></a>
+                <a href="/delete" class="action-btn"><span class="visually-hidden">Delete</span><svg
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="none" d="M0 0h24v24H0z" />
+                        <path
+                            d="M17 6h5v2h-2v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8H2V6h5V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3zm1 2H6v12h12V8zm-9 3h2v6H9v-6zm4 0h2v6h-2v-6zM9 4v2h6V4H9z" />
+                    </svg></svg></a>
             </div>
         </div>
-        <div class="email-display {{ if not .HasSelectedMessage }}hide{{end}}">
-            <a href="/" class="message-back"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M10.828 12l4.95 4.95-1.414 1.414L8 12l6.364-6.364 1.414 1.414z"/></svg> Back to messages</a>
-            <div class="message-container">
-                {{ if .HasSelectedMessage }}
-                <div class="message-details-container-mobile">
-                    <h2 class="message-subject">{{ .SelectedMessage.Subject }}</h2>
-                    <div class="message-details-mobile">
-                        <div>
-                            <div class="email-avatar {{ .SelectedMessage.AvatarColor }}"><p>{{ .SelectedMessage.AvatarLetter }}</p></div>
-                        </div>
-                        <div>
-                            <div class="message-from"><b>{{ .SelectedMessage.FromName }}</b> &lt;{{ .SelectedMessage.FromAddress }}&gt;</div>
-                            <div class="message-time">Received: {{ .SelectedMessage.ReceivedAt }}</div>
-                        </div>
+        <div class="sidebar-emails">
+            {{ range $i, $m := .Messages }}
+            <!-- {$m.ID} -->
+            <a class="sidebar-email {{ if eq $.SelectedMessage.ID $m.ID }}active{{end}}" href="/messages/{{$m.ID}}"
+                draggable="false">
+                <div>
+                    <div class="email-avatar {{$m.AvatarColor}}">
+                        <p>{{$m.AvatarLetter}}</p>
                     </div>
                 </div>
-
-                <div class="message-details">
-                    <div class="email-avatar {{ .SelectedMessage.AvatarColor }}"><p>{{ .SelectedMessage.AvatarLetter }}</p></div>
-                    <h2 class="message-subject">{{ .SelectedMessage.Subject }}</h2>
-                    <div class="message-from-time-row">
-                        <div class="message-from"><b>{{ .SelectedMessage.FromName }}</b> &lt;{{ .SelectedMessage.FromAddress }}&gt;</div>
-                        <div class="message-time">{{ .SelectedMessage.ReceivedAt }}</div>
-                    </div>
-                    <div class="etc-dots">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 3c-.825 0-1.5.675-1.5 1.5S11.175 6 12 6s1.5-.675 1.5-1.5S12.825 3 12 3zm0 15c-.825 0-1.5.675-1.5 1.5S11.175 21 12 21s1.5-.675 1.5-1.5S12.825 18 12 18zm0-7.5c-.825 0-1.5.675-1.5 1.5s.675 1.5 1.5 1.5 1.5-.675 1.5-1.5-.675-1.5-1.5-1.5z"/></svg>
-                    </div>
+                <div class="sidebar-email-details">
+                    <div class="sidebar-email-from">{{$m.FromName}}</div>
+                    <div class="sidebar-email-subject">{{$m.Subject}}</div>
+                    <div class="sidebar-email-time">{{$m.ReceivedAt}}</div>
                 </div>
+            </a>
+            {{else}}
+            <p class="no-emails">No messages</p>
+            {{end}}
 
-                {{ if not (eq .SelectedMessage.BodyHTML "") }}
-                <div class="message-content html">
-                    <iframe sandbox="allow-forms allow-popups allow-same-origin allow-scripts" srcdoc="{{.SelectedMessage.BodyHTML}}">
-                    </iframe>
-                </div>
-                {{else}}
-                <div class="message-content plain">
-                    <pre>{{.SelectedMessage.BodyPlain}}</pre>
-                </div>
-                {{end}}
-
-                {{ else }}
-                <div class="message-container-empty"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48"><path fill="none" d="M0 0h24v24H0z"/><path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm17 11h-3.416a5.001 5.001 0 0 1-9.168 0H4v5h16v-5zm0-2V5H4v7h5a3 3 0 0 0 6 0h5z"/></svg><p>Select a message to view it here</p></div></div>
-                {{end}}
-            </div>
+        </div>
+        <div class="sidebar-info">
+            <p><a href="https://github.com/krakazyabra/puffinmail.io/" target="_blank">Github</a> - <a
+                    href="https://about.puffinmail.io/" target="_blank">FAQ</a> - <a
+                    href="https://about.puffinmail.io/apidocs" target="_blank">API</a></p>
+            <p>For collaboration: <a href="mailto:krakazyabra@puffinmail.io">krakazyabra@puffinmail.io</a></p>
+            <!-- Matomo Image Tracker-->
+            <img referrerpolicy="no-referrer-when-downgrade"
+                src="https://matomo.puffinmail.io/matomo.php?idsite=2&amp;rec=1" style="border:0" alt="" />
+            <!-- End Matomo -->
         </div>
     </div>
+    <div class="email-display {{ if not .HasSelectedMessage }}hide{{end}}">
+        <a href="/" class="message-back"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                height="24">
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path d="M10.828 12l4.95 4.95-1.414 1.414L8 12l6.364-6.364 1.414 1.414z" />
+            </svg> Back to messages</a>
+        <div class="message-container">
+            {{ if .HasSelectedMessage }}
+            <div class="message-details-container-mobile">
+                <h2 class="message-subject">{{ .SelectedMessage.Subject }}</h2>
+                <div class="message-details-mobile">
+                    <div>
+                        <div class="email-avatar {{ .SelectedMessage.AvatarColor }}">
+                            <p>{{ .SelectedMessage.AvatarLetter }}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="message-from"><b>{{ .SelectedMessage.FromName }}</b> &lt;{{
+                            .SelectedMessage.FromAddress }}&gt;</div>
+                        <div class="message-time">Received: {{ .SelectedMessage.ReceivedAt }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-details">
+                <div class="email-avatar {{ .SelectedMessage.AvatarColor }}">
+                    <p>{{ .SelectedMessage.AvatarLetter }}</p>
+                </div>
+                <h2 class="message-subject">{{ .SelectedMessage.Subject }}</h2>
+                <div class="message-from-time-row">
+                    <div class="message-from"><b>{{ .SelectedMessage.FromName }}</b> &lt;{{ .SelectedMessage.FromAddress
+                        }}&gt;</div>
+                    <div class="message-time">{{ .SelectedMessage.ReceivedAt }}</div>
+                </div>
+                <div class="etc-dots">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="none" d="M0 0h24v24H0z" />
+                        <path
+                            d="M12 3c-.825 0-1.5.675-1.5 1.5S11.175 6 12 6s1.5-.675 1.5-1.5S12.825 3 12 3zm0 15c-.825 0-1.5.675-1.5 1.5S11.175 21 12 21s1.5-.675 1.5-1.5S12.825 18 12 18zm0-7.5c-.825 0-1.5.675-1.5 1.5s.675 1.5 1.5 1.5 1.5-.675 1.5-1.5-.675-1.5-1.5-1.5z" />
+                    </svg>
+                </div>
+            </div>
+
+            {{ if not (eq .SelectedMessage.BodyHTML "") }}
+            <div class="message-content html">
+                <iframe sandbox="allow-forms allow-popups allow-same-origin allow-scripts"
+                    srcdoc="{{.SelectedMessage.BodyHTML}}">
+                </iframe>
+            </div>
+            {{else}}
+            <div class="message-content plain">
+                <pre>{{.SelectedMessage.BodyPlain}}</pre>
+            </div>
+            {{end}}
+
+            {{ else }}
+            <div class="message-container-empty">
+                <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48">
+                        <path fill="none" d="M0 0h24v24H0z" />
+                        <path
+                            d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm17 11h-3.416a5.001 5.001 0 0 1-9.168 0H4v5h16v-5zm0-2V5H4v7h5a3 3 0 0 0 6 0h5z" />
+                    </svg>
+                    <p>Select a message to view it here</p>
+                </div>
+            </div>
+            {{end}}
+        </div>
+    </div>
+</div>
 {{end}}
