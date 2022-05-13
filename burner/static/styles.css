@@ -176,7 +176,7 @@ body {
 .sidebar {
   padding: var(--space-3);
   display: grid;
-  grid-template-rows: max-content auto 40px;
+  grid-template-rows: max-content auto 100px;
   min-height: 100%;
 }
 

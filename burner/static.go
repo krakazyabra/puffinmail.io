@@ -35,6 +35,7 @@ type staticDetails struct {
 	FontPath string
 	CSS      string
 	Logo     string
+	Wwpager  string
 }
 
 func (s *Server) getStaticDetails() staticDetails {
@@ -42,5 +43,6 @@ func (s *Server) getStaticDetails() staticDetails {
 		FontPath: s.cfg.StaticURL,
 		CSS:      fmt.Sprintf("%s/%s", s.cfg.StaticURL, css),
 		Logo:     fmt.Sprintf("%s/%s", s.cfg.StaticURL, "puffin.png"),
+		Wwpager:  fmt.Sprintf("%s/%s", s.cfg.StaticURL, "wwpager.png"),
 	}
 }
